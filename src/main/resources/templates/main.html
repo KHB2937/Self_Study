@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>메인 페이지</title>
+</head>
+<body>
+<h2 th:text="${msg}"></h2>
+<button><a href="/logout">로그아웃</a></button>
+<div id="container">
+  <h2>
+    공부해 공부
+  </h2>
+  <div id="year"></div>
+  <div id="month"></div>
+  <div id="weekDic"></div>
+  <div id="calenda"></div>
+</div>
+<div id="controller">
+  <h3>Today is ...</h3>
+  <div id="this-day"></div>
+  <div id="date"></div>
+  <div class="btn">
+    <div onclick="handleWeek(-1)"><img src="/img/previous.png"/></div>
+    <div onclick="handleWeek(1)"><img src="/img/next.png" style='margin-left:2rem'/></div>
+  </div>
+
+</div>
+<div id="back">
+  <div class="imgwrap">
+    <div class="imgview opaque" id="1"></div>
+    <div class="imgview" id="2"></div>
+    <div class="imgview" id="3"></div>
+    <div class="imgview" id="4"></div>
+    <div class="imgview" id="5"></div>
+    <div class="imgview" id="6"></div>
+    <div class="imgview" id="7"></div>
+    <div class="imgview" id="8"></div>
+    <div class="imgview" id="9"></div>
+    <div class="imgview" id="10"></div>
+    <div class="imgview" id="11"></div>
+    <div class="imgview" id="12"></div>
+    <div class="imgview" id="13"></div>
+  </div>
+</div>
+<div id="bg"></div>
+<div id="memo"></div>
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>선택한 날짜: <span id="selected-date"></span></h3>
+    <textarea id="memo-title" placeholder="제목을 입력"></textarea>
+    <br>
+    <textarea id="memo-text" placeholder="내용을 입력해 주세요"></textarea>
+    <br>
+    <button id="write-btn">작성</button>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+<script src="/js/script2.js"></script>
+</body>
+</html>
