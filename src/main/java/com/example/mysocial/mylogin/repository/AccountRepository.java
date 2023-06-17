@@ -1,8 +1,9 @@
-package com.example.social.loginaction.repository;
+package com.example.mysocial.mylogin.repository;
 
 
 
-import com.example.social.loginaction.model.Account;
+
+import com.example.mysocial.mylogin.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

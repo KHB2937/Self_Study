@@ -1,9 +1,10 @@
-package com.example.social.loginaction.service;
+package com.example.mysocial.mylogin.service;
 
 
 
-import com.example.social.loginaction.model.Account;
-import com.example.social.loginaction.repository.AccountRepository;
+
+import com.example.mysocial.mylogin.model.Account;
+import com.example.mysocial.mylogin.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

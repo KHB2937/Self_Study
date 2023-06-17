@@ -1,4 +1,4 @@
-package com.example.social.loginaction.model;
+package com.example.mysocial.mylogin.model;
 
 import lombok.Data;
 
