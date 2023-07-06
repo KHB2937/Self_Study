@@ -54,18 +54,21 @@ driver.switch_to.default_content()
 iframe_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'entryIframe')))
 driver.switch_to.frame(iframe_element)
 
+
 #가게명
 span_element = driver.find_element(By.XPATH, '//*[@id="_title"]/span[1]')
 name = span_element.text
 
 # 주소
-span_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[6]/div/div[2]/div/div/div[1]/div/a/span[1]')
-address = span_element.text
+address_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[6]/div/div[2]/div/div/div[1]/div/a/span[1]')
+address = address_element.text
 
 #전화번호
-span_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[6]/div/div[2]/div/div/div[4]/div/span[1]')
-number = span_element.text
-
+try:
+    number_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[6]/div/div[2]/div/div/div[4]/div/span[1]')
+    number = number_element.text
+except NoSuchElementException:
+    number = 'NaN'
 # 별점
 try:
     star_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[2]/div[1]/div[2]/span[1]/em')
@@ -73,14 +76,20 @@ try:
 except NoSuchElementException:
     star = 'NaN'
 
-review_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[5]/div/div/div/div/a[5]/span')
-review_element.click()
-time.sleep(2)
 try:
-    reviNum_element = driver.find_element(By.CSS_SELECTOR, '#app-root > div > div > div > div:nth-child(7) > div:nth-child(2) > div:nth-child(3) > h2 > span.place_section_count')
-    reviNum = reviNum_element.text
+    menu_element = driver.find_element(By.XPATH, '//*[@id="_title"]/span[2]')
+    menu = menu_element.text
 except NoSuchElementException:
-    review = 'NaN'
+    menu = 'NaN'
+
+# review_element = driver.find_element(By.XPATH, '//*[@id="app-root"]/div/div/div/div[5]/div/div/div/div/a[5]/span')
+# review_element.click()
+# time.sleep(2)
+# try:
+#     reviNum_element = driver.find_element(By.CSS_SELECTOR, '#app-root > div > div > div > div:nth-child(7) > div:nth-child(2) > div:nth-child(3) > h2 > span.place_section_count')
+#     reviNum = reviNum_element.text
+# except NoSuchElementException:
+#     review = 'NaN'
 
 
 
@@ -89,7 +98,8 @@ print(name)
 print(address)
 print(number)
 print(star)
-print(review)
+print(menu)
+# print(review)
 print('-------------------')
 
 # 프로그램을 종료하려면 사용자의 입력을 기다립니다.
