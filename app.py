@@ -21,7 +21,7 @@ def get_dataframe():
 # 사용자 입력 받기
 def get_user_input(df):
     # 도시/군/읍 선택
-    regions = df['시군구명'].unique().tolist()
+    regions = df['소재지전체주소'].unique().tolist()
     selected_region = st.sidebar.selectbox('도시/군/읍 선택', regions)
 
     # 선택한 지역과 동일한 도시/군/읍만 추출
