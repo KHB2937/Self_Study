@@ -20,19 +20,18 @@ def get_dataframe():
 
 # 사용자 입력 받기
 def get_user_input(df):
-    # 지역 선택
-    regions = df['소재지전체주소'].unique().tolist()
-    selected_region = st.sidebar.selectbox('주소 선택', regions)
+    # 도시/군/읍 선택
+    regions = df['시군구명'].unique().tolist()
+    selected_region = st.sidebar.selectbox('도시/군/읍 선택', regions)
 
-    # 업태구분명 선택
-    categories = df['업태구분명'].unique().tolist()
-    selected_category = st.sidebar.selectbox('업태구분명 선택', categories)
+    # 선택한 지역과 동일한 도시/군/읍만 추출
+    cities_towns = df[df['시군구명'].str.startswith(selected_region)]['시군구명'].unique().tolist()
 
-    return selected_region, selected_category
+    return cities_towns
 
 # 데이터 프레임 필터링
-def filter_dataframe(df, region, category):
-    filtered_df = df[(df['소재지전체주소'] == region) & (df['업태구분명'] == category)]
+def filter_dataframe(df, selected_region):
+    filtered_df = df[df['시군구명'].str.startswith(selected_region)]
     return filtered_df
 
 # streamlit 앱
@@ -41,10 +40,10 @@ def main():
     df = get_dataframe()
 
     # 사용자 입력 받기
-    selected_region, selected_category = get_user_input(df)
+    selected_region = get_user_input(df)
 
     # 데이터 프레임 필터링
-    filtered_df = filter_dataframe(df, selected_region, selected_category)
+    filtered_df = filter_dataframe(df, selected_region)
 
     # 선택된 부분만 데이터프레임으로 출력
     st.write(filtered_df)
