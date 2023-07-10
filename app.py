@@ -32,7 +32,7 @@ def get_user_input(df):
 
 # 데이터 프레임 필터링
 def filter_dataframe(df, region, category):
-    filtered_df = df[(df['지역'] == region) & (df['업태구분명'] == category)]
+    filtered_df = df[(df['소재지전체주소'] == region) & (df['업태구분명'] == category)]
     return filtered_df
 
 # streamlit 앱
