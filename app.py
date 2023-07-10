@@ -25,13 +25,13 @@ def get_user_input(df):
     selected_region = st.sidebar.selectbox('도시/군/읍 선택', regions)
 
     # 선택한 지역과 동일한 도시/군/읍만 추출
-    cities_towns = df[df['시군구명'].str.startswith(selected_region)]['시군구명'].unique().tolist()
+    cities_towns = df[df['소재지전체주소'].str.startswith(selected_region)]['시군구명'].unique().tolist()
 
     return cities_towns
 
 # 데이터 프레임 필터링
 def filter_dataframe(df, selected_region):
-    filtered_df = df[df['시군구명'].str.startswith(selected_region)]
+    filtered_df = df[df['소재지전체주소'].str.startswith(selected_region)]
     return filtered_df
 
 # streamlit 앱
