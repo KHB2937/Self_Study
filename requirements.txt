@@ -1,1 +1,6 @@
 gdown
+pandas
+﻿streamlit
+numpy
+statsmodels
+plotly
