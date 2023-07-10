@@ -21,7 +21,7 @@ def get_dataframe():
 # 사용자 입력 받기
 def get_user_input(df):
     # 지역 선택
-    regions = df['지역'].unique().tolist()
+    regions = df['소재지전체주소'].unique().tolist()
     selected_region = st.sidebar.selectbox('지역 선택', regions)
 
     # 업태구분명 선택
