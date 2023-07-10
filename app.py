@@ -22,7 +22,7 @@ def get_dataframe():
 def get_user_input(df):
     # 지역 선택
     regions = df['소재지전체주소'].unique().tolist()
-    selected_region = st.sidebar.selectbox('소재지전체주소', regions)
+    selected_region = st.sidebar.selectbox('주소 선택', regions)
 
     # 업태구분명 선택
     categories = df['업태구분명'].unique().tolist()
