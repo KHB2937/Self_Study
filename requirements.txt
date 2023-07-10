@@ -1,6 +1,6 @@
 gdown
 pandas
-﻿streamlit
+streamlit
 numpy
 statsmodels
 plotly
