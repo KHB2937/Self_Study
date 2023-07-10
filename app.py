@@ -1,7 +1,7 @@
-# main.py
 import re
 import pandas as pd
 import gdown
+import streamlit as st
 
 # 데이터 프레임 가져오기
 def get_dataframe():
@@ -25,3 +25,6 @@ def main():
 
     # 데이터프레임 출력
     st.write(df)
+
+if __name__ == '__main__':
+    main()
