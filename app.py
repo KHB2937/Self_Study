@@ -1,13 +1,13 @@
 # main.py
-import streamlit as st
+import re
 import pandas as pd
 import gdown
 
-
-# 데이터프레임을 가져오는 함수
+# 데이터 프레임 가져오기
 def get_dataframe():
     # 구글 드라이브 공유 링크에서 파일 ID 추출
-    file_id = 'https://drive.google.com/file/d/1-YNWYdFPYOYU4fjSLnSpCicvNIPPmKS7/view?usp=drive_link'  # 구글 드라이브 공유 링크에서 추출한 파일 ID를 입력합니다.
+    link = 'https://drive.google.com/file/d/1-YNWYdFPYOYU4fjSLnSpCicvNIPPmKS7/view?usp=drive_link'
+    file_id = re.findall(r'/d/([a-zA-Z0-9_-]+)', link)[0]
 
     # 파일 다운로드
     url = f'https://drive.google.com/uc?id={file_id}'
