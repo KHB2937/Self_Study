@@ -18,13 +18,36 @@ def get_dataframe():
     df = pd.read_csv(output_file)
     return df
 
+# 사용자 입력 받기
+def get_user_input(df):
+    # 지역 선택
+    regions = df['지역'].unique().tolist()
+    selected_region = st.sidebar.selectbox('지역 선택', regions)
+
+    # 업태구분명 선택
+    categories = df['업태구분명'].unique().tolist()
+    selected_category = st.sidebar.selectbox('업태구분명 선택', categories)
+
+    return selected_region, selected_category
+
+# 데이터 프레임 필터링
+def filter_dataframe(df, region, category):
+    filtered_df = df[(df['지역'] == region) & (df['업태구분명'] == category)]
+    return filtered_df
+
 # streamlit 앱
 def main():
     # 데이터프레임을 가져옴
     df = get_dataframe()
 
-    # 데이터프레임 출력
-    st.write(df)
+    # 사용자 입력 받기
+    selected_region, selected_category = get_user_input(df)
+
+    # 데이터 프레임 필터링
+    filtered_df = filter_dataframe(df, selected_region, selected_category)
+
+    # 선택된 부분만 데이터프레임으로 출력
+    st.write(filtered_df)
 
 if __name__ == '__main__':
     main()
